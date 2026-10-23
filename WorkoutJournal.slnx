@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Data/">
+    <Project Path="WorkoutJournal.Data/WorkoutJournal.Data/WorkoutJournal.Data.csproj" Id="a595e335-2103-413e-a06e-bf8faaf9ed0a" />
+  </Folder>
+  <Folder Name="/Web/">
+    <Project Path="WorkoutJournal.ViewModels/WorkoutJournal.ViewModels/WorkoutJournal.ViewModels.csproj" Id="ea080ff0-3125-443f-918d-d2ebc9592552" />
+    <Project Path="WorkoutJournal.Web/WorkoutJournal.Web.csproj" />
+  </Folder>
+</Solution>

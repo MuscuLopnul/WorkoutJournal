@@ -1,0 +1,26 @@
+﻿@* @model Workout
+
+@{
+    ViewData["Title"] = "Workout Details";
+}
+
+<h2>Workout Details</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h4>@Model._____</h4>
+
+        <p>
+            <strong>Date:</strong>
+            @Model._____.ToString("dd.MM.yyyy")
+        </p>
+
+        <p>
+            <strong>Notes:</strong>
+            @Model._____
+        </p>
+
+        <a asp-action="Index" class="btn btn-secondary">Back</a>
+    </div>
+</div> 
+ *@

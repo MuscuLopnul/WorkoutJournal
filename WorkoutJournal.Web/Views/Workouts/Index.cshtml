@@ -1,0 +1,21 @@
+﻿@model IEnumerable<WorkoutIndexViewModel>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h2>
+    My Workouts
+</h2>
+<p>
+    Track your workouts and keep improving.
+</p>
+@foreach (var workout in Model)
+{
+    <p>@workout.Name@*  — @workout.Date *@</p>
+}
+<a asp-controller="Workouts"
+   asp-action="Create"
+   class="btn btn-primary">
+    Create Workout
+</a>

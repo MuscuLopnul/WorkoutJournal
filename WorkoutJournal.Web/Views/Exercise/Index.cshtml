@@ -1,0 +1,48 @@
+﻿@* @model IEnumerable<Exercise>
+
+@{
+    ViewData["Title"] = "Exercises";
+}
+
+<h2>My Exercises</h2>
+
+<p>Manage your exercises and track what you train.</p>
+
+<a asp-controller="Exercises"
+   asp-action="Create"
+   class="btn btn-primary mb-3">
+    Add Exercise
+</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var exercise in Model)
+        {
+            <tr>
+                <td>@exercise.Name</td>
+                <td>@exercise.Description</td>
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-id="@exercise.Id"
+                       class="btn btn-warning btn-sm">
+                        Edit
+                    </a>
+
+                    <a asp-action="Delete"
+                       asp-route-id="@exercise.Id"
+                       class="btn btn-danger btn-sm">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+ *@
