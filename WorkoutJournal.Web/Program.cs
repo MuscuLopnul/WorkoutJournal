@@ -1,14 +1,27 @@
-
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WorkoutJournal.Data;
+using WorkoutJournal.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<WorkoutJournalDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services
+    .AddDefaultIdentity<IdentityUser>(options =>
+    {
+        options.SignIn.RequireConfirmedAccount = false;
+        options.Password.RequireDigit = false;
+        options.Password.RequireLowercase = false;
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequireUppercase = false;
+    })
+    .AddEntityFrameworkStores<WorkoutJournalDbContext>();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IWorkoutService, WorkService>();
 
 var app = builder.Build();
 
@@ -25,10 +38,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+app.MapRazorPages();
 app.Run();
