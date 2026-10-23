@@ -20,13 +20,24 @@ namespace WorkoutJournal.Data
             base.OnModelCreating(builder);
 
             builder.Entity<Workout>()
-                   .HasMany(g => g.Exercises);
+                .HasMany(w => w.Exercises)
+                .WithOne(e => e.Workout)
+                .HasForeignKey(e => e.WorkoutId);
+
+            builder.Entity<Workout>()
+                .HasOne(w => w.User)
+                .WithMany()
+                .HasForeignKey(w => w.UserId);
 
             builder.Entity<Exercise>()
-                   .HasOne(g => g.Workout);
+                .HasOne(e => e.Workout)
+                .WithMany(w => w.Exercises)
+                .HasForeignKey(e => e.WorkoutId);
 
             builder.Entity<Exercise>()
-                   .HasOne(g => g.ExerciseType);
+                .HasOne(e => e.ExerciseType)
+                .WithMany()
+                .HasForeignKey(e => e.ExerciseTypeId);
 
             var exerciseTypes = new List<ExerciseType>
             {

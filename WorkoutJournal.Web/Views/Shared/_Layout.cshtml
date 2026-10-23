@@ -28,15 +28,8 @@
 
                         @if (User?.Identity?.IsAuthenticated ?? false)
                         {
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa-solid fa-book-open"></i> My workouts
-                                </a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" asp-controller="Workouts" asp-action="Index">
-                                        <i class="fas fa-list"></i> My workouts
-                                    </a>
-                                </div>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Workouts" asp-action="Index">My workouts</a>
                             </li>
                         }
                     </ul>
