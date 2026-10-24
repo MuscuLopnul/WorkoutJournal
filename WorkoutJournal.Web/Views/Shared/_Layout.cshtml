@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WorkoutJournal.styles.css" asp-append-version="true" />
 </head>
-<body class="bg-light">
+<body style="background-color: #9fb8d6; min-height: 100vh;">
     <header>
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark shadow-sm mb-4">
             <div class="container">
@@ -38,7 +38,6 @@
                             </li>
                         }
                     </ul>
-
                     <partial name="_LoginPartial" />
                 </div>
             </div>
@@ -50,8 +49,7 @@
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted bg-white">
+    <footer class =" footer text-muted">
         <div class="container">
             &copy; 2026 - WorkoutJournal - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
