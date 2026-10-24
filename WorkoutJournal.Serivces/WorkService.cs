@@ -26,6 +26,7 @@ namespace WorkoutJournal.Services
                 var item = new WorkoutIndexViewModel
                 {
                     Name = workout.Date.DayOfWeek.ToString(),
+                    WorkoutStatus = workout.WorkoutStatus.ToString()
                 };
                 list.Add(item);
             }

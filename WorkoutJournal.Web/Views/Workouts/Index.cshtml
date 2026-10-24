@@ -12,7 +12,7 @@
 </p>
 @foreach (var workout in Model)
 {
-    <p>@workout.Name@*  — @workout.Date *@</p>
+    <p>@workout.Name - @workout.WorkoutStatus</p>
 }
 <a asp-controller="Workouts"
    asp-action="Create"
