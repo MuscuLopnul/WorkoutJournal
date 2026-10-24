@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using WorkoutJournal.Data.Enums;
+using WorkoutJournal.Common.Enums;
 
 namespace WorkoutJournal.Data.Models
 {

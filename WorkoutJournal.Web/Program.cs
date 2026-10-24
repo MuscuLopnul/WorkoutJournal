@@ -21,7 +21,9 @@ builder.Services
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IWorkoutService, WorkService>();
+builder.Services.AddScoped<ITrainingProgramService, TrainingProgramService>();
+builder.Services.AddScoped<IWorkoutService, WorkoutService>();
+builder.Services.AddScoped<IExerciseTypeService, ExerciseTypeService>();
 
 var app = builder.Build();
 

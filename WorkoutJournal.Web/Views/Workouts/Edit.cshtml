@@ -1,33 +1,96 @@
-﻿@* @model Workout
+﻿@using WorkoutJournal.Common.Enums
+ @model WorkoutEditViewModel
 
 @{
     ViewData["Title"] = "Edit Workout";
 }
 
-<h2>Edit Workout</h2>
+<h2 class="text-center">Edit Workout</h2>
+<hr />
 
-<form asp-action="Edit" method="post">
-    <input type="hidden" asp-for="Id" />
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <form asp-controller="Workouts" asp-action="Edit" method="post">
 
-    <div class="mb-3">
-        <label asp-for="Name" class="form-label"></label>
-        <input asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
+            <input type="hidden" asp-for="Id" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label asp-for="Date" class="form-label"></label>
+                <input asp-for="Date" type="datetime-local" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Note" class="form-label"></label>
+                <textarea asp-for="Note" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Note" class="text-danger"></span>
+            </div>
+
+           <div class="mb-3">
+                <label asp-for="WorkoutStatus" class="form-label">Status</label>
+                <select asp-for="WorkoutStatus"
+                        asp-items="Html.GetEnumSelectList<WorkoutStatus>()"
+                        class="form-select">
+                </select>
+                <span asp-validation-for="WorkoutStatus" class="text-danger"></span>
+            </div>
+
+            <h4 class="mt-4">Exercises</h4>
+
+            @for (int i = 0; i < Model.Exercises.Count; i++)
+            {
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <input type="hidden" asp-for="Exercises[i].Id" />
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="Exercises[i].ExerciseTypeId" class="form-label">
+                                    Exercise Type
+                                </label>
+
+                                <select asp-for="Exercises[i].ExerciseTypeId" class="form-select">
+                                    @foreach (var exerciseType in ViewBag.ExerciseTypes)
+                                    {
+                                        <option value="@exerciseType.Id">
+                                            @exerciseType.Name
+                                        </option>
+                                    }
+                                </select>
+
+                                <span asp-validation-for="Exercises[i].ExerciseTypeId" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="Exercises[i].Sets" class="form-label">Sets</label>
+                                <input asp-for="Exercises[i].Sets" type="number" min="1" class="form-control" />
+                                <span asp-validation-for="Exercises[i].Sets" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="Exercises[i].Reps" class="form-label">Reps</label>
+                                <input asp-for="Exercises[i].Reps" type="number" min="1" class="form-control" />
+                                <span asp-validation-for="Exercises[i].Reps" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="Exercises[i].Weight" class="form-label">Weight (kg)</label>
+                                <input asp-for="Exercises[i].Weight" type="number" min="0" step="0.5" class="form-control" />
+                                <span asp-validation-for="Exercises[i].Weight" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a asp-controller="Workouts" asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </form>
     </div>
+</div>
 
-    <div class="mb-3">
-        <label asp-for="Date" class="form-label"></label>
-        <input asp-for="Date" type="date" class="form-control" />
-        <span asp-validation-for="Date" class="text-danger"></span>
-    </div>
-
-    <div class="mb-3">
-        <label asp-for="Notes" class="form-label"></label>
-        <textarea asp-for="Notes" class="form-control"></textarea>
-        <span asp-validation-for="Notes" class="text-danger"></span>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Save Changes</button>
-    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
-</form>
- *@
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

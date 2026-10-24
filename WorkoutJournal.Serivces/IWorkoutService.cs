@@ -6,6 +6,8 @@ namespace WorkoutJournal.Services
     {
         Task<List<WorkoutIndexViewModel>> GetAllWorkouts(string userId);
         Task CreateWorkout(WorkoutCreateViewModel model, string userId);
+        Task<WorkoutEditViewModel> GetWorkout(int workoutId);
+        Task EditWorkout(WorkoutEditViewModel model);
 
     }
 }

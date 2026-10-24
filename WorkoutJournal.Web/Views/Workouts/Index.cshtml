@@ -13,6 +13,13 @@
 @foreach (var workout in Model)
 {
     <p>@workout.Name - @workout.WorkoutStatus</p>
+    <a asp-controller="Workouts"
+       asp-action="Edit"
+       asp-route-id="@workout.Id"
+       class="btn btn-primary">
+        Edit Workout
+    </a>
+    <br />
 }
 <a asp-controller="Workouts"
    asp-action="Create"

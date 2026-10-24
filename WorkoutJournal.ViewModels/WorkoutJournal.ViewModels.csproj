@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WorkoutJournal.Common\WorkoutJournal.Common.csproj" />
+  </ItemGroup>
+
 </Project>

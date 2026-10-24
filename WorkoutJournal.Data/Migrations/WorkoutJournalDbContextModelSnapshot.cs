@@ -375,6 +375,251 @@ namespace WorkoutJournal.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("WorkoutJournal.Data.Models.TrainingProgram", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TrainingPrograms");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Full Body Workout"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Upper Body Workout"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Leg Day"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Push Day"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Pull Day"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Strength Training"
+                        });
+                });
+
+            modelBuilder.Entity("WorkoutJournal.Data.Models.TrainingProgramExercise", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ExerciseTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Reps")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Sets")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TrainingProgramId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Weight")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExerciseTypeId");
+
+                    b.HasIndex("TrainingProgramId");
+
+                    b.ToTable("TrainingProgramExercises");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ExerciseTypeId = 1,
+                            Reps = 10,
+                            Sets = 3,
+                            TrainingProgramId = 1,
+                            Weight = 40m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ExerciseTypeId = 2,
+                            Reps = 8,
+                            Sets = 4,
+                            TrainingProgramId = 1,
+                            Weight = 60m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ExerciseTypeId = 3,
+                            Reps = 8,
+                            Sets = 3,
+                            TrainingProgramId = 1,
+                            Weight = 80m
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ExerciseTypeId = 4,
+                            Reps = 10,
+                            Sets = 3,
+                            TrainingProgramId = 2,
+                            Weight = 30m
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ExerciseTypeId = 5,
+                            Reps = 12,
+                            Sets = 3,
+                            TrainingProgramId = 2,
+                            Weight = 35m
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ExerciseTypeId = 6,
+                            Reps = 12,
+                            Sets = 3,
+                            TrainingProgramId = 2,
+                            Weight = 10m
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ExerciseTypeId = 2,
+                            Reps = 10,
+                            Sets = 4,
+                            TrainingProgramId = 3,
+                            Weight = 60m
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ExerciseTypeId = 3,
+                            Reps = 8,
+                            Sets = 3,
+                            TrainingProgramId = 3,
+                            Weight = 80m
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ExerciseTypeId = 1,
+                            Reps = 12,
+                            Sets = 3,
+                            TrainingProgramId = 3,
+                            Weight = 30m
+                        },
+                        new
+                        {
+                            Id = 10,
+                            ExerciseTypeId = 1,
+                            Reps = 8,
+                            Sets = 4,
+                            TrainingProgramId = 4,
+                            Weight = 50m
+                        },
+                        new
+                        {
+                            Id = 11,
+                            ExerciseTypeId = 4,
+                            Reps = 10,
+                            Sets = 3,
+                            TrainingProgramId = 4,
+                            Weight = 25m
+                        },
+                        new
+                        {
+                            Id = 12,
+                            ExerciseTypeId = 6,
+                            Reps = 12,
+                            Sets = 3,
+                            TrainingProgramId = 4,
+                            Weight = 10m
+                        },
+                        new
+                        {
+                            Id = 13,
+                            ExerciseTypeId = 5,
+                            Reps = 10,
+                            Sets = 4,
+                            TrainingProgramId = 5,
+                            Weight = 35m
+                        },
+                        new
+                        {
+                            Id = 14,
+                            ExerciseTypeId = 3,
+                            Reps = 8,
+                            Sets = 3,
+                            TrainingProgramId = 5,
+                            Weight = 70m
+                        },
+                        new
+                        {
+                            Id = 15,
+                            ExerciseTypeId = 6,
+                            Reps = 12,
+                            Sets = 3,
+                            TrainingProgramId = 5,
+                            Weight = 12m
+                        },
+                        new
+                        {
+                            Id = 16,
+                            ExerciseTypeId = 1,
+                            Reps = 6,
+                            Sets = 4,
+                            TrainingProgramId = 6,
+                            Weight = 60m
+                        },
+                        new
+                        {
+                            Id = 17,
+                            ExerciseTypeId = 2,
+                            Reps = 6,
+                            Sets = 4,
+                            TrainingProgramId = 6,
+                            Weight = 80m
+                        },
+                        new
+                        {
+                            Id = 18,
+                            ExerciseTypeId = 3,
+                            Reps = 6,
+                            Sets = 3,
+                            TrainingProgramId = 6,
+                            Weight = 100m
+                        });
+                });
+
             modelBuilder.Entity("WorkoutJournal.Data.Models.Workout", b =>
                 {
                     b.Property<int>("Id")
@@ -474,6 +719,25 @@ namespace WorkoutJournal.Data.Migrations
                     b.Navigation("Workout");
                 });
 
+            modelBuilder.Entity("WorkoutJournal.Data.Models.TrainingProgramExercise", b =>
+                {
+                    b.HasOne("WorkoutJournal.Data.Models.ExerciseType", "ExerciseType")
+                        .WithMany()
+                        .HasForeignKey("ExerciseTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WorkoutJournal.Data.Models.TrainingProgram", "TrainingProgram")
+                        .WithMany("Exercises")
+                        .HasForeignKey("TrainingProgramId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ExerciseType");
+
+                    b.Navigation("TrainingProgram");
+                });
+
             modelBuilder.Entity("WorkoutJournal.Data.Models.Workout", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
@@ -483,6 +747,11 @@ namespace WorkoutJournal.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("WorkoutJournal.Data.Models.TrainingProgram", b =>
+                {
+                    b.Navigation("Exercises");
                 });
 
             modelBuilder.Entity("WorkoutJournal.Data.Models.Workout", b =>

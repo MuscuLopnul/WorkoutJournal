@@ -9,4 +9,5 @@
     <Project Path="WorkoutJournal.ViewModels/WorkoutJournal.ViewModels.csproj" />
     <Project Path="WorkoutJournal.Web/WorkoutJournal.Web.csproj" />
   </Folder>
+  <Project Path="WorkoutJournal.Common/WorkoutJournal.Common.csproj" Id="529d4789-bd95-471f-ac38-c9e7d951ac36" />
 </Solution>

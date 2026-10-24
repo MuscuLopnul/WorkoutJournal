@@ -24,6 +24,14 @@
                 <textarea asp-for="Note" class="form-control" rows="4"></textarea>
                 <span asp-validation-for="Note" class="text-danger"></span>
             </div>
+                <select asp-for="TrainingProgramId" class="form-select">
+                    @foreach(var trainingProgram in ViewBag.TrainingPrograms)
+                    {
+                        <option value="@trainingProgram.Id">
+                        @trainingProgram.Name
+                        </option>
+                    }
+                </select>
 
             <button type="submit" class="btn btn-primary">Create</button>
             <a asp-action="Index" class="btn btn-secondary">Cancel</a>
