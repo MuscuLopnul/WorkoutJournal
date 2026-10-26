@@ -48,6 +48,11 @@ namespace WorkoutJournal.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(WorkoutEditViewModel workout)
         {
+            if (workout.Date.Date < DateTime.Today)
+            {
+                ModelState.AddModelError("Date", "Date cannot be in the past!");
+            }
+
             if (!ModelState.IsValid)
             {
                 ViewBag.ExerciseTypes = await _exerciseTypeService.GetAll();

@@ -22,18 +22,17 @@ namespace WorkoutJournal.Services
                .OrderByDescending(x => x.Date)
                .ToListAsync();
 
-            var grouped = workouts.GroupBy(d => d.Date.Month);
+            var grouped = workouts.GroupBy(d => new { d.Date.Month, d.Date.Year });
 
             var list = new List<MonthlyProgressViewModel>();
             foreach (var group in grouped)
             {
                 if (group.Any())
                 {
-                    var firstItemOfTheGroup = group.FirstOrDefault();
                     var item = new MonthlyProgressViewModel
                     {
-                        MonthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(group.Key),
-                        Year = firstItemOfTheGroup!.Date.Year,
+                        MonthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(group.Key.Month),
+                        Year = group.Key.Year,
                         NumberOfCompleted = group.Count(x => x.WorkoutStatus == WorkoutStatus.Completed),
                         NumberOfNotStarted = group.Count(x => x.WorkoutStatus == WorkoutStatus.NotStarted),
                         NumberOfSkipped = group.Count(x => x.WorkoutStatus == WorkoutStatus.Skipped),
