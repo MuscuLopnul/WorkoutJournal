@@ -18,13 +18,16 @@ namespace WorkoutJournal.Services
         public async Task<List<WorkoutIndexViewModel>> GetAllWorkouts(string userId)
         {
             var workouts = await _context.Workouts
-                .Where(x => x.UserId == userId).ToListAsync();
+                .Where(x => x.UserId == userId)
+                .OrderByDescending(x => x.Date)
+                .ToListAsync();
 
             var list = new List<WorkoutIndexViewModel>();
             foreach (var workout in workouts)
             {
                 var item = new WorkoutIndexViewModel
                 {
+                    Date = workout.Date,
                     Id = workout.Id,
                     Name = workout.Date.DayOfWeek.ToString(),
                     WorkoutStatus = workout.WorkoutStatus.ToString()
@@ -103,9 +106,9 @@ namespace WorkoutJournal.Services
                 return;
             }
             
-            workout.Date = workout.Date;
-            workout.Note = workout.Note;
-            workout.WorkoutStatus = workout.WorkoutStatus;
+            workout.Date = model.Date;
+            workout.Note = model.Note;
+            workout.WorkoutStatus = model.WorkoutStatus;
             
             foreach (var exercise in workout.Exercises)
             {
@@ -118,8 +121,17 @@ namespace WorkoutJournal.Services
                     exercise.Weight = newExercise.Weight;
                 }
             }
-
             _context.Workouts.Update(workout);
+            await _context.SaveChangesAsync();
+        }
+        public async Task DeleteWorkout(int id)
+        {
+            var workout = await _context.Workouts.FirstOrDefaultAsync(x => x.Id == id);
+            if (workout == null)
+            {
+                return;
+            }
+            _context.Workouts.Remove(workout);
             await _context.SaveChangesAsync();
         }
     }

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using WorkoutJournal.Data.Models;
 using WorkoutJournal.Services;
 using WorkoutJournal.ViewModels;
 
@@ -51,23 +50,35 @@ namespace WorkoutJournal.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.ExerciseTypes = await _exerciseTypeService.GetAll();
                 return View(workout);
             }
 
             await _service.EditWorkout(workout);
-            ViewBag.ExerciseTypes = await _exerciseTypeService.GetAll();
-            return View(workout);
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(WorkoutCreateViewModel workout)
         {
+            if(workout.Date.Date < DateTime.Today)
+            {
+                ModelState.AddModelError("Date", "Date cannot be in the past!");
+            }
+          
             if (!ModelState.IsValid)
             {
+                ViewBag.TrainingPrograms = await _trainingProgramService.GetAllPrograms();
                 return View(workout);
             }
 
             await _service.CreateWorkout(workout, GetUserId());
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _service.DeleteWorkout(id);
             return RedirectToAction(nameof(Index));
         }
 

@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using WorkoutJournal.Common.Enums;
+﻿using WorkoutJournal.Common.Enums;
 
 namespace WorkoutJournal.ViewModels
 {

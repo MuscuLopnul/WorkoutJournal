@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Create Workout";
 }
-
 <h1>Create Workout</h1>
 
 <hr />
@@ -15,7 +14,8 @@
 
             <div class="mb-3">
                 <label asp-for="Date" class="form-label"></label>
-                <input asp-for="Date" type="datetime-local" class="form-control" />
+                <input asp-for="Date" type="date" min="@DateTime.Today.ToString("yyyy-MM-dd")"
+                 data-msg-min="Date cannot be in the past." class="form-control" />
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
 
@@ -24,21 +24,23 @@
                 <textarea asp-for="Note" class="form-control" rows="4"></textarea>
                 <span asp-validation-for="Note" class="text-danger"></span>
             </div>
+
+            <div class="mb-3">
+                <label asp-for="TrainingProgramId" class="form-label">Training program</label>
                 <select asp-for="TrainingProgramId" class="form-select">
-                    @foreach(var trainingProgram in ViewBag.TrainingPrograms)
+                    @foreach (var trainingProgram in ViewBag.TrainingPrograms)
                     {
-                        <option value="@trainingProgram.Id">
-                        @trainingProgram.Name
-                        </option>
+                        <option value="@trainingProgram.Id">@trainingProgram.Name</option>
                     }
                 </select>
+                <span asp-validation-for="TrainingProgramId" class="text-danger"></span>
+            </div>
 
             <button type="submit" class="btn btn-primary">Create</button>
             <a asp-action="Index" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
 </div>
-
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

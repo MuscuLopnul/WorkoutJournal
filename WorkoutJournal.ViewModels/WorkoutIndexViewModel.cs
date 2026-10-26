@@ -7,5 +7,7 @@
         public string Name { get; set; }
 
         public string WorkoutStatus { get; set; }
+
+        public DateTime Date { get; set; }
     }
 }
