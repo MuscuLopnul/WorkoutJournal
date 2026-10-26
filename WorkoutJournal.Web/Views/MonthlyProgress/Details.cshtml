@@ -1,0 +1,62 @@
+﻿@model List<MonthlyProgressViewModel>
+
+@{
+    ViewData["Title"] = "Monthly Progress";
+}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Monthly Progress</h2>
+
+    <div class="row g-4">
+        @foreach (var month in Model)
+        {
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-header bg-dark text-white py-3">
+                        <h5 class="mb-0">
+                            @month.MonthName
+                            @month.Year
+                        </h5>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Completed</span>
+                            <span class="badge bg-success fs-6">
+                                @month.NumberOfCompleted
+                            </span>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Partially completed</span>
+                            <span class="badge bg-warning text-dark fs-6">
+                                @month.NumberOfPartiallyCompleted
+                            </span>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Skipped</span>
+                            <span class="badge bg-danger fs-6">
+                                @month.NumberOfSkipped
+                            </span>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <span>Not started</span>
+                            <span class="badge bg-secondary fs-6">
+                                @month.NumberOfNotStarted
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="card-footer bg-light text-muted">
+                        Total workouts:
+                        @(month.TotalWorkout)
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

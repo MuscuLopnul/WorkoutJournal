@@ -7,11 +7,4 @@
         Skipped = 2,
         PartiallyCompleted = 3
     }
-
-    public enum WorkoutCategory
-    {
-        ChestAndBiceps,
-        BackAndTriceps,
-        LegsAndShoulders,
-    }
 }

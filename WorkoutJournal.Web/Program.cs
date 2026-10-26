@@ -24,6 +24,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ITrainingProgramService, TrainingProgramService>();
 builder.Services.AddScoped<IWorkoutService, WorkoutService>();
 builder.Services.AddScoped<IExerciseTypeService, ExerciseTypeService>();
+builder.Services.AddScoped<IProgressService, ProgressService>();
 
 var app = builder.Build();
 
