@@ -4,44 +4,11 @@
 
 @if (User?.Identity?.IsAuthenticated ?? false)
 {
-    <div class="text-center mb-4">
-        <h1 class="display-5 fw-bold">Choose your workout</h1>
-        <p class="lead">Pick a day and log your exercises.</p>
-    </div>
-
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-            <a asp-controller="Workouts" asp-action="Create" asp-route-category="ChestAndBiceps" class="text-decoration-none text-dark">
-                <div class="card h-100 shadow-sm">
-                    <img src="~/images/chest.jpg" class="card-img-top" alt="Chest and biceps" />
-                    <div class="card-body text-center">
-                        <h5 class="card-title mb-0">Chest + Biceps</h5>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col">
-            <a asp-controller="Workouts" asp-action="Create" asp-route-category="BackAndTriceps" class="text-decoration-none text-dark">
-                <div class="card h-100 shadow-sm">
-                    <img src="~/images/back.jpg" class="card-img-top" alt="Back and triceps" />
-                    <div class="card-body text-center">
-                        <h5 class="card-title mb-0">Back + Triceps</h5>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col">
-            <a asp-controller="Workouts" asp-action="Create" asp-route-category="Legs" class="text-decoration-none text-dark">
-                <div class="card h-100 shadow-sm">
-                    <img src="~/images/legs.jpg" class="card-img-top" alt="Legs" />
-                    <div class="card-body text-center">
-                        <h5 class="card-title mb-0">Legs</h5>
-                    </div>
-                </div>
-            </a>
-        </div>
+    <div class="text-center py-5">
+        <h1 class="display-5 fw-bold">Your training log</h1>
+        <p class="lead">Plan a workout, add exercises and track your progress.</p>
+        <a asp-controller="Workouts" asp-action="Create" class="btn btn-warning btn-lg">New workout</a>
+        <a asp-controller="Workouts" asp-action="Index" class="btn btn-outline-dark btn-lg">My workouts</a>
     </div>
 }
 else
