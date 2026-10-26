@@ -74,12 +74,12 @@ This project was built as the ASP.NET Fundamentals course project.
 
    Visual Studio Terminal with the CLI from the solution folder:
    ```
-dotnet ef database update --project WorkoutJournal.Data --startup-project WorkoutJournal.Web
+   dotnet ef database update --project WorkoutJournal.Data --startup-project WorkoutJournal.Web
    ```
    The migrations also seed the exercise types and the training programs.
 4. Run the application:
    ```
-dotnet run --project WorkoutJournal.Web
+   dotnet run --project WorkoutJournal.Web
    ```
    or press `F5` in Visual Studio. The site opens on the HTTPS address printed in the console (for example `https://localhost:7133`).
 
